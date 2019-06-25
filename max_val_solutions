@@ -1,0 +1,40 @@
+Sol #1
+def maxValue(arr)
+  arr.max
+end
+
+
+Sol #2
+def maxValue(arr)
+  arr.sort.last
+end
+
+
+Sol #3
+def maxValue(arr)
+  new_arr = [0]
+  arr.each do |num|
+    if num > new_arr[-1]
+      new_arr << num
+    else
+      new_arr.unshift(num)
+    end
+  end
+  return new_arr.last
+end
+
+
+Sol #4
+def maxValue(arr)
+
+  arr.each_with_index do |num1, i1|
+    arr.each_with_index do |num2, i2|
+      if num1 > num2
+        arr[i1], arr[i2] = arr[i2], arr[i1]
+      else
+        arr[i1], arr[i2] = arr[i1], arr[i2]
+      end
+    end
+  end
+  return arr.first
+end
